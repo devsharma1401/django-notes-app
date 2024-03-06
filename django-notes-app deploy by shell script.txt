@@ -29,21 +29,21 @@ deploy() {
 
 echo " **************DEPLOYMENT STARTED**************** "
 
-if clone; then
+if ! clone; then
         echo " the code directory already exists "
 fi
 
-if install_requirments; then
+if ! install_requirments; then
         echo " installation failed "
         exit 1
 fi
 
-if required_restart; then
+if ! required_restart; then
         echo " system fault identified "
         exit 1
 fi
 
-if deploy; then 
+if ! deploy; then 
         echo " Deployment failed, mailing the admin "
         #sendmail
         exit 1
